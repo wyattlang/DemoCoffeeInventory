@@ -1,5 +1,7 @@
 package org.aerospace.training.coffee.repository.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,6 +52,25 @@ public class DrinkEntity {
 	}
 	public void setGramsSugar(Integer gramsSugar) {
 		this.gramsSugar = gramsSugar;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(gramsSugar, id, milligramsCaffeine, name, size);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DrinkEntity other = (DrinkEntity) obj;
+		return Objects.equals(gramsSugar, other.gramsSugar) && Objects.equals(id, other.id)
+				&& Objects.equals(milligramsCaffeine, other.milligramsCaffeine) && Objects.equals(name, other.name)
+				&& Objects.equals(size, other.size);
 	}
 	
 }

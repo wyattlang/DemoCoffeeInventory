@@ -1,5 +1,7 @@
 package org.aerospace.training.coffee.dto;
 
+import java.util.Objects;
+
 public class DrinkDTO {
 
 	private Long id;
@@ -43,6 +45,25 @@ public class DrinkDTO {
 	public String toString() {
 		return String.format("DrinkDTO [id=%s, name=%s, size=%s, milligramsCaffeine=%s, gramsSugar=%s]", id, name, size,
 				milligramsCaffeine, gramsSugar);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(gramsSugar, id, milligramsCaffeine, name, size);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DrinkDTO other = (DrinkDTO) obj;
+		return Objects.equals(gramsSugar, other.gramsSugar) && Objects.equals(id, other.id)
+				&& Objects.equals(milligramsCaffeine, other.milligramsCaffeine) && Objects.equals(name, other.name)
+				&& Objects.equals(size, other.size);
 	}
 	
 }
